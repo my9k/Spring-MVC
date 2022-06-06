@@ -1,0 +1,5 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+Spring-MVC,com.springmvc.service.impl,CustomerServiceImpl,89,0,0,0,19,0,6,0,6,0
+Spring-MVC,com.springmvc.controller,CustomerController,21,0,0,0,5,0,5,0,5,0
+Spring-MVC,com.springmvc.entity,Customer,25,18,0,0,11,8,7,3,7,3
+Spring-MVC,com.springmvc,SpringMvcApplication,5,3,0,0,2,1,1,1,1,1

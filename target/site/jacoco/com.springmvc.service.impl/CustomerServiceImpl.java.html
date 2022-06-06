@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CustomerServiceImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Spring-MVC</a> &gt; <a href="index.source.html" class="el_package">com.springmvc.service.impl</a> &gt; <span class="el_source">CustomerServiceImpl.java</span></div><h1>CustomerServiceImpl.java</h1><pre class="source lang-java linenums">package com.springmvc.service.impl;
+
+import java.util.*;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.springmvc.entity.Customer;
+import com.springmvc.repo.CustomerRepo;
+import com.springmvc.service.CustomerService;
+
+@Component
+<span class="nc" id="L17">public class CustomerServiceImpl implements CustomerService {</span>
+	
+	@Autowired
+	private CustomerRepo customerRepository;
+
+	
+<span class="nc" id="L23">	int s=0;</span>
+	@Override
+	public ModelAndView getCustomers(){
+<span class="nc" id="L26">		List&lt;Customer&gt; customers = customerRepository.findAll();</span>
+<span class="nc" id="L27">		HashMap&lt;String, List&lt;Customer&gt;&gt; model = new HashMap&lt;&gt;();</span>
+<span class="nc" id="L28">		model.put(&quot;list&quot;, customers);</span>
+<span class="nc" id="L29">		 s = customers.size();</span>
+		//return customers;
+<span class="nc" id="L31">		return new ModelAndView(&quot;customerList&quot;, model);</span>
+	}
+	public int size() {
+<span class="nc" id="L34">		return s;</span>
+	}
+	
+	@Override
+	    public ModelAndView showForm() {
+<span class="nc" id="L39">	        return new ModelAndView(&quot;customerForm&quot;);</span>
+	    }
+
+
+	
+	 @Override
+	public ModelAndView addCustomer(HttpServletRequest req) {
+<span class="nc" id="L46">		String name = req.getParameter(&quot;name&quot;);</span>
+<span class="nc" id="L47">		String mobile = req.getParameter(&quot;mobile&quot;);</span>
+<span class="nc" id="L48">		String email = req.getParameter(&quot;email&quot;);</span>
+		
+<span class="nc" id="L50">		Customer c = new Customer(name,mobile,email);</span>
+<span class="nc" id="L51">		customerRepository.save(c);</span>
+<span class="nc" id="L52">		HashMap&lt;String, Customer&gt; model = new HashMap&lt;&gt;();</span>
+<span class="nc" id="L53">		model.put(&quot;c&quot;, c);</span>
+<span class="nc" id="L54">		return  new ModelAndView(&quot;success&quot;, model);</span>
+	}
+	
+	@Override
+	public String delete(Long id) {
+<span class="nc" id="L59">		customerRepository.findById(id).ifPresent(customerRepository::delete);</span>
+<span class="nc" id="L60">		return &quot;redirect:/customer/&quot;;</span>
+	}
+
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
