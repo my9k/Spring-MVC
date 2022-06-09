@@ -1,6 +1,0 @@
-com\springmvc\service\impl\CustomerServiceImpl.class
-com\springmvc\SpringMvcApplication.class
-com\springmvc\service\CustomerService.class
-com\springmvc\repo\CustomerRepo.class
-com\springmvc\controller\CustomerController.class
-com\springmvc\entity\Customer.class
