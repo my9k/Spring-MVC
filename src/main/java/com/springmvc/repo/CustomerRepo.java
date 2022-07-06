@@ -8,5 +8,6 @@ import com.springmvc.entity.Customer;
 
 @Repository
 public interface CustomerRepo extends JpaRepository<Customer,Long> {
-
+// comment
 }
+
